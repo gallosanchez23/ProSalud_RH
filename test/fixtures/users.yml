@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  last_name: MyString
+  user_name: MyString
+  password: MyString
+  adress: MyString
+  phone: MyString
+  email: MyString
+  favorite_cake: MyString
+  photo: MyString
+  curp: MyString
+  rfc: MyString
+  start_date: 2016-11-13
+  antique: 1
+  status: false
+  comments: MyText
+  points: 1
+  role_id: 
+  external_role_id: 
+  user_id: 
+  place_id: 
+
+two:
+  name: MyString
+  last_name: MyString
+  user_name: MyString
+  password: MyString
+  adress: MyString
+  phone: MyString
+  email: MyString
+  favorite_cake: MyString
+  photo: MyString
+  curp: MyString
+  rfc: MyString
+  start_date: 2016-11-13
+  antique: 1
+  status: false
+  comments: MyText
+  points: 1
+  role_id: 
+  external_role_id: 
+  user_id: 
+  place_id: 

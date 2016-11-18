@@ -1,0 +1,44 @@
+<section class="container-fluid">
+	
+	<div class="row" style="padding-left: 3%;">
+		<h2>Baja - <%= @user.name + ' ' + @user.last_name %></h2>
+	</div>
+
+	<%= form_for(@user) do |f| %>
+		<div class="row">
+			<div class="col-xs-3">
+				<div class="image-input-wrapper text-center">
+					<br>
+					<div class="image-input-widget">
+						<%= image_tag(@user.photo.present? ? '#{@user.photo}' : 'placeholders/image_400.png', style: 'max-width: 100%;') %>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-9">
+				<br>
+				<br>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<i class="fa fa-info fa-fw"></i> Comentarios
+					</div>
+					<div class="panel-body form">
+						<div class="form-body">
+							<div class="form-group form-md-line-input">
+								<%= f.label :comments, 'Motivo de la baja' %>
+								<p><small class="text-muted">Escriba aquí el motivo por el cual este usuario se está dando de baja</small></p>
+								<%= f.text_area :comments, class: 'form-control', rows: 4, requierd: true %>
+							</div>
+						</div>
+						<div class="form-actions outside text-center">
+							<div class="field">
+								<%= link_to 'Cancelar', users_path, class: 'btn btn-danger' %>
+								<%= f.submit 'Guardar', class: 'btn btn-primary', data: { confirm: "¿Está seguro que desea establacer este como el motivo para la baja de #{@user.name} #{@user.last_name}?" } %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<% end %>
+
+</section>

@@ -1,0 +1,161 @@
+<section class='container-fluid'>
+	<div class='row' style='padding-left: 3%;'>
+		<h2>Nuevo usuario</h1>
+	</div>
+
+	<% url = users_path %>
+	<%= form_for(@new_user) do |f| %>
+		<div class='row'>
+			<div class='col-xs-3'>
+				<div class='image-input-wrapper text-center'>
+					<br>
+					<div class='image-input-widget'>
+						<%= image_tag(@new_user.photo.present? ? '#{@new_user.photo}' : 'placeholders/image_400.png', style: 'max-width: 100%;') %>
+						<div class='image-input-actions'>
+							<%= f.label :photo, 'Seleccionar' %>
+							<a class='clear-input' href='#'>&times;</a>
+						</div>
+						<%= f.file_field :photo, accept: 'image/*' %>
+						<%= f.hidden_field :remove_photo, value: 0, class: 'remove-file' %>
+					</div>
+				</div>
+			</div>
+
+			<div class='col-xs-9'>
+				<br>
+				<div class='panel panel-default'>
+					<div class='panel-heading'>
+						<i class='fa fa-info fa-fw'></i> Información general
+					</div>
+					<div class='panel-body form'>
+						<div class='form-body'>
+							<div class='row'>
+								<div class='col-xs-6'>
+									<div class='form-group form-md-line-input'>
+										<%= hidden_field_tag :from, params[:from] %>
+										<%= f.label :name,'Nombre *' %>
+            				<%= f.text_field :name, class: 'form-control', placeholder: 'Jesús Miguel', required: true, autofocus: true %>
+									</div>
+								</div>
+								<div class='col-xs-6'>
+									<div class='form-group form-md-line-input'>
+										<%= f.label :last_name,'Appellidos *' %>
+            				<%= f.text_field :last_name, class: 'form-control', placeholder: 'Lugo Rocha', required: true %>
+									</div>
+								</div>
+								<div class='col-xs-12'>
+									<div class='form-group form-md-line-input'>
+										<%= f.label :user_name,'Nombre de usuario *' %>
+            				<%= f.text_field :user_name, class: 'form-control', placeholder: 'jesus.rocha@prosalud.com', required: true %>
+									</div>
+								</div>
+								<div class='col-xs-12'>
+									<div class='form-group form-md-line-input'>
+										<%= f.label :password,'Contraseña *' %>
+            				<%= f.password_field :password, class: 'form-control', required: true %>
+									</div>
+								</div>
+								<div class='col-xs-12'>
+									<div class='form-group form-md-line-input'>
+										<%= f.label :password_2,'Confirma la contraseña *' %>
+            				<%= f.password_field :password_2, class: 'form-control', required: true %>
+									</div>
+								</div>
+								<div class='col-xs-12'>
+									<div class='form-group form-md-line-input'>
+										<%= f.label :role_id,'Tipo de cuenta *' %>
+            				<%= f.select :role_id, Role.where.not(id: 1).pluck(:name, :id), { include_blank: false }, class: 'form-control', required: true %>
+									</div>
+									<br>
+									<hr>
+									<br>
+								</div>
+								<div class='col-xs-6'>
+									<div class='form-group form-md-line-input'>
+										<%= f.label :adress,'Dirección *' %>
+            				<%= f.text_field :adress, class: 'form-control', required: true %>
+									</div>
+								</div>
+								<div class='col-xs-3'>
+									<div class='form-group form-md-line-input'>
+										<%= f.label :phone,'Teléfono/Celular' %>
+            				<%= f.text_field :phone, class: 'form-control' %>
+									</div>
+								</div>
+								<div class='col-xs-3'>
+									<div class='form-group form-md-line-input'>
+										<%= f.label :email,'Correo electrónico *' %>
+            				<%= f.text_field :email, class: 'form-control', required: true %>
+									</div>
+								</div>
+								<div class='col-xs-6'>
+									<div class='form-group form-md-line-input'>
+										<%= f.label :curp,'CURP *' %>
+            				<%= f.text_field :curp, class: 'form-control', required: true %>
+									</div>
+								</div>
+								<div class='col-xs-3'>
+									<div class='form-group form-md-line-input'>
+										<%= f.label :rfc,'RFC *' %>
+            				<%= f.text_field :rfc, class: 'form-control', required: true %>
+									</div>
+								</div>
+								<div class='col-xs-3'>
+									<div class='form-group form-md-line-input'>
+										<%= f.label :favorite_cake,'Pastel favorito *' %>
+            				<%= f.text_field :favorite_cake, class: 'form-control', required: true %>
+									</div>
+								</div>
+								<div class='col-xs-12'><hr><br></div>
+								<div class='col-xs-6'>
+									<div class='form-group form-md-line-input'>
+										<%= f.label :external_role_id,'Puesto dentro de la empresa *' %>
+            				<%= f.select :external_role_id, ExternalRole.pluck(:name, :id), { include_blank: false }, class: 'form-control', required: true %>
+									</div>
+								</div>
+								<div class='col-xs-6'>
+									<div class='form-group form-md-line-input'>
+										<%= f.label :user_id,'Persona de la que depende *' %>
+            				<%= f.select :user_id, User.where.not(role_id: 4).pluck(:name, :id), { include_blank: false }, class: 'form-control', required: true %>
+									</div>
+								</div>
+								<div class='col-xs-6'>
+									<div class='form-group form-md-line-input'>
+										<%= f.label :place_id,'Lugar donde labora *' %>
+            				<%= f.select :place_id, Place.pluck(:name, :id), { include_blank: false }, class: 'form-control', required: true %>
+									</div>
+								</div>
+								<div class='col-xs-2'>
+									<div class='form-group form-md-line-input'>
+										<%= f.label :antique,'Antiguedad' %>
+            				<%= f.select :antique, options_for_select([*0..20]), { include_blank: false }, class: 'form-control' %>
+									</div>
+								</div>
+								<div class='col-xs-2'>
+									<div class='form-group form-md-line-input'>
+										<%= f.label :status,'Estatus *' %>
+            				<%= f.select :status, options_for_select({'Activo' => true, 'Inactico' => false}), { include_blank: false }, class: 'form-control', required: true %>
+									</div>
+								</div>
+								<div class='col-xs-2'>
+									<div class='form-group form-md-line-input'>
+										<%= f.label :points,'Puntos para bonos *' %>
+            				<%= f.text_field :points, class: 'form-control', required: true %>
+									</div>
+								</div>
+								<div class='col-xs-12'><hr><br></div>
+							</div>
+						</div>
+						<div class="form-actions outside text-center">
+							<div class="field">
+								<%= link_to 'Cancelar', users_path, class: 'btn btn-danger' %>
+								<%= f.submit 'Guardar', class: 'btn btn-primary' %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<% end %>
+
+</section>
