@@ -5,8 +5,6 @@ class CreatePlaces < ActiveRecord::Migration
       t.string :adress
       t.string :phone
       t.string :photo
-
-      t.timestamps null: false
     end
   end
 end

@@ -1,17 +1,7 @@
-class AddRecordsToRolesAndExternalRoles < ActiveRecord::Migration
+class AddRecordsAndDefaultValuesToExternalRoles < ActiveRecord::Migration
   def change
 
-  	newRoles = [
-  		{name: 'Maestra'},
-  		{name: 'Supervisor'},
-  		{name: 'Administrador'},
-  		{name: 'Colaborador'}
-  	]
-
-  	newRoles.each do |role|
-  		Role.create(role)
-  	end
-
+  	#Creates new external roles at table
   	newExternalRoles = [
   		{name: 'Director General'},
   		{name: 'Director de Voluntariado'},

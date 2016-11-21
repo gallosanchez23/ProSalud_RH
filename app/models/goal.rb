@@ -4,5 +4,5 @@ class Goal < ActiveRecord::Base
 	#2 => Grupal
 	has_many :user_goals
 	has_many :users, :through => :user_goals
-	validates :name, :start_date, :end_date, :type, presence: true
+	validates :name, :start_date, :end_date, :goal_type, presence: true
 end

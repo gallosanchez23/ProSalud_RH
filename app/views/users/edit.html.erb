@@ -1,16 +1,25 @@
-<section class='container-fluid'>
-	<div class='row' style='padding-left: 3%;'>
-		<h2>Nuevo usuario</h1>
+<section class="container-fluid">
+
+	<div class="row" style="padding-left: 3%;">
+		<div class="col-xs-10">
+			<h2>Editar usuario - <%= @user.name + ' ' + @user.lastname %></h2>
+		</div>
+		<div class="col-xs-2">
+			<br>
+			<%= link_to users_path, class: 'btn btn-info' do %>
+				<i class="fa fa-chevron-left fa-fw"></i>
+				Regresar
+			<% end %>
+		</div>
 	</div>
 
-	<% url = users_path %>
-	<%= form_for(@new_user) do |f| %>
+	<%= form_for(@user) do |f| %>
 		<div class='row'>
 			<div class='col-xs-3'>
 				<div class='image-input-wrapper text-center'>
 					<br>
 					<div class='image-input-widget'>
-						<%= image_tag(@new_user.photo.present? ? '#{@new_user.photo}' : 'placeholders/image_400.png', style: 'max-width: 100%;') %>
+						<%= image_tag(@user.photo.present? ? '#{@user.photo}' : 'placeholders/image_400.png', style: 'max-width: 100%;') %>
 						<div class='image-input-actions'>
 							<%= f.label :photo, 'Seleccionar' %>
 							<a class='clear-input' href='#'>&times;</a>
@@ -33,37 +42,25 @@
 								<div class='col-xs-6'>
 									<div class='form-group form-md-line-input'>
 										<%= hidden_field_tag :from, params[:from] %>
-										<%= f.label :name,'Nombre *' %>
+										<%= f.label :name,'Nombre' %>
             				<%= f.text_field :name, class: 'form-control', placeholder: 'Jesús Miguel', required: true, autofocus: true %>
 									</div>
 								</div>
 								<div class='col-xs-6'>
 									<div class='form-group form-md-line-input'>
-										<%= f.label :lastname,'Appellidos *' %>
+										<%= f.label :lastname,'Appellidos' %>
             				<%= f.text_field :lastname, class: 'form-control', placeholder: 'Lugo Rocha', required: true %>
 									</div>
 								</div>
 								<div class='col-xs-12'>
 									<div class='form-group form-md-line-input'>
-										<%= f.label :username,'Nombre de usuario *' %>
+										<%= f.label :username,'Nombre de usuario' %>
             				<%= f.text_field :username, class: 'form-control', placeholder: 'jesus.rocha@prosalud.com', required: true %>
 									</div>
 								</div>
 								<div class='col-xs-12'>
 									<div class='form-group form-md-line-input'>
-										<%= f.label :password,'Contraseña *' %>
-            				<%= f.password_field :password, class: 'form-control', required: true %>
-									</div>
-								</div>
-								<div class='col-xs-12'>
-									<div class='form-group form-md-line-input'>
-										<%= f.label :password_2,'Confirma la contraseña *' %>
-            				<%= f.password_field :password_2, class: 'form-control', required: true %>
-									</div>
-								</div>
-								<div class='col-xs-12'>
-									<div class='form-group form-md-line-input'>
-										<%= f.label :role_id,'Tipo de cuenta *' %>
+										<%= f.label :role_id,'Tipo de cuenta' %>
             				<%= f.select :role_id, Role.where.not(id: 1).pluck(:name, :id), { include_blank: false }, class: 'form-control', required: true %>
 									</div>
 									<br>
@@ -72,7 +69,7 @@
 								</div>
 								<div class='col-xs-6'>
 									<div class='form-group form-md-line-input'>
-										<%= f.label :adress,'Dirección *' %>
+										<%= f.label :adress,'Dirección' %>
             				<%= f.text_field :adress, class: 'form-control', required: true %>
 									</div>
 								</div>
@@ -84,44 +81,44 @@
 								</div>
 								<div class='col-xs-3'>
 									<div class='form-group form-md-line-input'>
-										<%= f.label :email,'Correo electrónico *' %>
+										<%= f.label :email,'Correo electrónico' %>
             				<%= f.text_field :email, class: 'form-control', required: true %>
 									</div>
 								</div>
 								<div class='col-xs-6'>
 									<div class='form-group form-md-line-input'>
-										<%= f.label :curp,'CURP *' %>
+										<%= f.label :curp,'CURP' %>
             				<%= f.text_field :curp, class: 'form-control', required: true %>
 									</div>
 								</div>
 								<div class='col-xs-3'>
 									<div class='form-group form-md-line-input'>
-										<%= f.label :rfc,'RFC *' %>
+										<%= f.label :rfc,'RFC' %>
             				<%= f.text_field :rfc, class: 'form-control', required: true %>
 									</div>
 								</div>
 								<div class='col-xs-3'>
 									<div class='form-group form-md-line-input'>
-										<%= f.label :favorite_cake,'Pastel favorito *' %>
+										<%= f.label :favorite_cake,'Pastel favorito' %>
             				<%= f.text_field :favorite_cake, class: 'form-control', required: true %>
 									</div>
 								</div>
 								<div class='col-xs-12'><hr><br></div>
 								<div class='col-xs-6'>
 									<div class='form-group form-md-line-input'>
-										<%= f.label :external_role_id,'Puesto dentro de la empresa *' %>
+										<%= f.label :external_role_id,'Puesto dentro de la empresa' %>
             				<%= f.select :external_role_id, ExternalRole.pluck(:name, :id), { include_blank: false }, class: 'form-control', required: true %>
 									</div>
 								</div>
 								<div class='col-xs-6'>
 									<div class='form-group form-md-line-input'>
-										<%= f.label :user_id,'Persona de la que depende *' %>
+										<%= f.label :user_id,'Persona de la que depende' %>
             				<%= f.select :user_id, User.where.not(role_id: 4).pluck(:name, :id), { include_blank: false }, class: 'form-control', required: true %>
 									</div>
 								</div>
 								<div class='col-xs-6'>
 									<div class='form-group form-md-line-input'>
-										<%= f.label :place_id,'Lugar donde labora *' %>
+										<%= f.label :place_id,'Lugar donde labora' %>
             				<%= f.select :place_id, Place.pluck(:name, :id), { include_blank: false }, class: 'form-control', required: true %>
 									</div>
 								</div>
@@ -133,13 +130,7 @@
 								</div>
 								<div class='col-xs-2'>
 									<div class='form-group form-md-line-input'>
-										<%= f.label :status,'Estatus *' %>
-            				<%= f.select :status, options_for_select({'Activo' => true, 'Inactico' => false}), { include_blank: false }, class: 'form-control', required: true %>
-									</div>
-								</div>
-								<div class='col-xs-2'>
-									<div class='form-group form-md-line-input'>
-										<%= f.label :points,'Puntos para bonos *' %>
+										<%= f.label :points,'Puntos para bonos' %>
             				<%= f.text_field :points, class: 'form-control', required: true %>
 									</div>
 								</div>

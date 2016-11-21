@@ -2,8 +2,8 @@ class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
       t.string :name
-      t.string :last_name
-      t.string :user_name
+      t.string :lastname
+      t.string :username
       t.string :password
       t.string :adress
       t.string :phone
@@ -21,8 +21,6 @@ class CreateUsers < ActiveRecord::Migration
       t.references :external_role, index: true, foreign_key: true
       t.references :user, index: true, foreign_key: true
       t.references :place, index: true, foreign_key: true
-
-      t.timestamps null: false
     end
   end
 end

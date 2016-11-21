@@ -5,8 +5,6 @@ class CreatePresents < ActiveRecord::Migration
       t.text :description
       t.integer :points
       t.string :photo
-
-      t.timestamps null: false
     end
   end
 end

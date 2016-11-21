@@ -82,7 +82,7 @@
 		      							<%= user.name %>
 		      						</td>
 		      						<td>
-		      							<%= user.last_name %>
+		      							<%= user.lastname %>
 		      						</td>
 		      						<td>
 		      							<% @ext_role = ExternalRole.find_by(id: user.external_role_id) %>
@@ -92,34 +92,36 @@
 		      							<%= user.status = 1 ? 'Activo' : 'Inactivo' %>
 		      						</td>
 		      						<td>
-		      							<div class="btn-group">
-		      								<button class="btn btn-info btn-sm btn-outline dropdown-toggle" type='button' data-toggle='dropdown'>
-		      									Acciones
-		      									<i class="fa fa-angle-down"></i>
-		      								</button>
-		      								<ul class="dropdown-menu">
-		      									<li>
-		      										<%= link_to user_path(user) do %>
-		      										<i class="fa fa-eye fa-fw"></i>
-		      										 Consultar
-		      										<% end %>
-		      									</li>
-		      									<li>
-		      										<%= link_to edit_user_path(user) do %>
-		      										<i class="fa fa-pencil-square-o fa-fw"></i>
-		      										 Editar
-		      										<% end %>
-		      									</li>
-		      									<% if user.status = 1 %>
-		      										<li>
-		      											<%= link_to edit_user_status_path(user), data: { confirm: "¿Está seguro que desea dar de baja a #{user.name} #{user.last_name}?" } do %>
-			      											<i class="fa fa-user-times fa-fw"></i>
-			      											Baja
+		      							<% if user.id != 1 %>
+			      							<div class="btn-group">
+			      								<button class="btn btn-info btn-sm btn-outline dropdown-toggle" type='button' data-toggle='dropdown'>
+			      									Acciones
+			      									<i class="fa fa-angle-down"></i>
+			      								</button>
+			      								<ul class="dropdown-menu">
+			      									<li>
+			      										<%= link_to user_path(user) do %>
+			      										<i class="fa fa-eye fa-fw"></i>
+			      										 Consultar
 			      										<% end %>
-		      										</li>
-		      									<% end %>
-		      								</ul>
-		      							</div>
+			      									</li>
+			      									<li>
+			      										<%= link_to edit_user_path(user) do %>
+			      										<i class="fa fa-pencil-square-o fa-fw"></i>
+			      										 Editar
+			      										<% end %>
+			      									</li>
+			      									<% if user.status = 1 %>
+			      										<li>
+			      											<%= link_to edit_user_status_path(user), data: { confirm: "¿Está seguro que desea dar de baja a #{user.name} #{user.lastname}?" } do %>
+				      											<i class="fa fa-user-times fa-fw"></i>
+				      											Baja
+				      										<% end %>
+			      										</li>
+			      									<% end %>
+			      								</ul>
+			      							</div>
+			      						<% end %>
 		      						</td>
 		      					</tr>
 		      				<% end %>

@@ -72,25 +72,25 @@ a:hover {
 }
 
 .navbar-trans {
-	background-color:#2b2b2b;
+	background-color:#242424;
     color:#cdcdcd;
     border-width:0;
 }
 
 .navbar-trans .navbar-brand, .navbar-trans >.container-fluid .navbar-brand {
     padding: 14px;
-    color:#f44d3c;
+    color:#46b8da;
 }
 
 .navbar-trans li>a:focus,.navbar-trans li.active {
-	background-color:#f44d3c;
-	color:#333;
+	background-color:#D8516B;
+	color:#fff;
 }
 
 .navbar-trans li>a:hover {
-	background-color:#f44d3c;
+	background-color:#D8516B;
 	color:#fff;
-	opacity:0.5;
+	opacity:0.7;
 }
 
 .navbar-trans a{

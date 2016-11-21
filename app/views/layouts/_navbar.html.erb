@@ -10,7 +10,6 @@
       <%= link_to users_path, class: 'navbar-brand text-info' do %>
         ProSalud
       <% end %>
-      <a class="navbar-brand text-info" href="">ProSalud</a>
     </div>
     <div class="navbar-collapse collapse" id="navbar-collapsible">
       <ul class="nav navbar-nav navbar-left">
@@ -20,10 +19,26 @@
             Usuarios
           <% end %>
         </li>
-        <li><a href="#"><i class="fa fa-sitemap fa-fw"></i> Organigrama</a></li>
+        <li>
+          <a href="#">
+            <i class="fa fa-sitemap fa-fw"></i>
+             Organigrama
+          </a>
+        </li>
+        <li>
+          <%= link_to goals_path do %>
+            <i class="fa fa-calendar fa-fw"></i>
+             Objetivos
+          <% end %>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-trophy fa-lg"></i></a></li>
+        <li>
+          <%= link_to root_path do %>
+            <i class="fa fa-sign-out fa-lg"></i>
+          <% end %>
+        </li>
       </ul>
     </div>
   </div>

@@ -6,8 +6,6 @@ class CreateGoals < ActiveRecord::Migration
       t.date :start_date
       t.date :end_date
       t.integer :type
-
-      t.timestamps null: false
     end
   end
 end
