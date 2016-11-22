@@ -1,0 +1,76 @@
+<section class="container-fluid">
+	
+	<div class="row" style="padding-left: 3%;">
+		<div class="col-xs-10">
+			<h2>Asignar objetivos a - <%= @user.name + ' ' + @user.lastname %></h2>
+		</div>
+		<div class="col-xs-2">
+			<br>
+			<%= link_to user_path, class: 'btn btn-info' do %>
+				<i class="fa fa-chevron-left fa-fw"></i>
+				Regresar
+			<% end %>
+		</div>
+	</div>
+
+	<br>
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+        	<i class="fa fa-calendar fa-fw" style="padding-top: 8px; padding-bottom: 10px;"></i> Objetivos disponibles
+        	<div class="pull-right">
+            <%= link_to new_goal_path, class: 'btn btn-success' do %>
+            	<i class="fa fa-plus-square fa-fw"></i>
+            	 Nuevo objetivo
+            <% end %>
+        	</div>
+      	</div>
+
+        <div class="panel-body">
+		      <div class="portlet-body">
+		      	<div class="table-responsive">
+		      		<table class="table table-hover">
+		      			<thead>
+		      				<tr>
+		      					<th></th>
+		      					<th>Nombre</th>
+		      					<th>Descripción</th>
+		      					<th>Tipo de objetivo</th>
+		      					<th></th>
+		      				</tr>
+		      			</thead>
+		      			<tbody>
+		      				<% @goals.each_with_index do |goal, index| %>
+		      					<tr>
+		      						<td>
+		      							<%= index + 1 %>
+		      						</td>
+		      						<td>
+		      							<%= goal.name %>
+		      						</td>
+		      						<td>
+		      							<%= goal.description %>
+		      						</td>
+		      						<td>
+		      							<%= goal.goal_type == 1 ? 'Individual' : 'Grupal' %>
+		      						</td>
+		      						<td>
+												<%= link_to update_users_goals_path(goal_id: goal.id), class: 'btn btn-info' do %>
+													<i class="fa fa-plus-square fa-fw"></i>
+													 Asignar
+												<% end %>
+		      						</td>
+		      					</tr>
+		      				<% end %>
+		      			</tbody>
+		      		</table>
+		      	</div>
+			    </div>
+
+		    </div>
+		  </div>
+		</div>
+	</div>
+
+</section>

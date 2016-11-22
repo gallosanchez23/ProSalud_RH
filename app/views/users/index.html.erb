@@ -1,6 +1,6 @@
 <section class="container-fluid">
 	<div class="row" style="padding-left: 3%;">
-		<h2>Búsqueda de usuarios</h2>
+		<h2>Usuarios</h2>
 	</div>
 	<br>
 	<div class="row">
@@ -27,6 +27,14 @@
 			      					<div class="form-xs-line-input">
 			      						<%= f.label :role_id_eq, 'Tipo de usuario' %>
 												<%= f.select :role_id_eq, Role.pluck(:name, :id), {include_blank: true}, class: 'form-control' %>
+			      					</div>
+			      				</div>
+			      			</div>
+			      			<div class="col-xs-3">
+			      				<div class="form-group">
+			      					<div class="form-xs-line-input">
+			      						<%= f.label :status_eq, 'Estatus del usuario' %>
+												<%= f.select :status_eq, options_for_select({ 'Activo' => true, 'Inactivo' => false }), {include_blank: true}, class: 'form-control' %>
 			      					</div>
 			      				</div>
 			      			</div>
@@ -89,7 +97,7 @@
 		      							<%= @ext_role.name unless @ext_role.nil? %>
 		      						</td>
 		      						<td>
-		      							<%= user.status = 1 ? 'Activo' : 'Inactivo' %>
+		      							<%= user.status == true ? 'Activo' : 'Inactivo' %>
 		      						</td>
 		      						<td>
 		      							<% if user.id != 1 %>

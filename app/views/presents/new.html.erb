@@ -1,0 +1,74 @@
+<section class="container-fluid">
+	
+	<div class='row' style='padding-left: 3%;'>
+		<h2>Nuevo premio</h2>
+	</div>
+
+	<br>
+	<%= form_for(@new_present) do |f| %>
+		<div class="row">
+
+			<div class='col-xs-3'>
+				<div class='image-input-wrapper text-center'>
+					<br>
+					<div class='image-input-widget'>
+						<%= image_tag(@new_present.photo.present? ? '#{@new_present.photo}' : 'placeholders/image_400.png', style: 'max-width: 100%;') %>
+						<div class='image-input-actions'>
+							<%= f.label :photo, 'Seleccionar' %>
+							<a class='clear-input' href='#'>&times;</a>
+						</div>
+						<%= f.file_field :photo, accept: 'image/*' %>
+						<%= f.hidden_field :remove_photo, value: 0, class: 'remove-file' %>
+					</div>
+				</div>
+			</div>
+
+			<br>
+			<div class="col-xs-9">
+				<div class="panel panel-default">
+
+					<div class="panel-heading">
+						<i class="fa fa-info fa-fw"></i>
+						 Información sobre nuevo premio
+					</div>
+
+					<div class="panel-body form">
+						<div class="form-body">
+							<div class="row">
+								<div class="col-xs-6">
+									<div class='form-group form-md-line-input'>
+										<%= hidden_field_tag :from, params[:from] %>
+										<%= f.label :name,'Nombre *' %>
+		        				<%= f.text_field :name, class: 'form-control', placeholder: 'Premio', required: true, autofocus: true %>
+									</div>
+								</div>
+								<div class="col-xs-6">
+									<div class="form-group form-md-line-input">
+										<%= f.label :points, 'Puntos *' %>
+										<%= f.text_field :points, class: 'form-control', required: true %>
+									</div>
+								</div>
+								<div class="col-xs-12">
+									<div class='form-group form-md-line-input'>
+										<%= f.label :description,'Descripción del nevo premio' %>
+		        				<%= f.text_area :description, rows: 6, class: 'form-control', autofocus: true %>
+									</div>
+								</div>
+							</div>
+						</div>
+						<br>
+
+						<div class="form-actions outside text-center">
+							<div class="field">
+								<%= link_to 'Cancelar', presents_path, class: 'btn btn-danger' %>
+								<%= link_to 'Guardar', presents_path, class: 'btn btn-primary' %>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	<% end %>
+
+</section>

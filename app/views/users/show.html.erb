@@ -39,7 +39,7 @@
 						<div class="col-xs-5">
 							<h4>
 								<i class="fa fa-leaf fa-fw"></i><strong> Estatus: </strong>
-								<%= @user.status = true ? ' Activo' : ' Inactivo' %>
+								<%= @user.status == true ? ' Activo' : ' Inactivo' %>
 							</h4>
 						</div>
 						<div class="col-xs-12">
@@ -66,13 +66,91 @@
 		</div>
 	</div>
 	<br>
+
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<i class="fa fa-calendar fa-fw"></i> Objetivos
+					<i class="fa fa-calendar fa-fw" style="padding-top: 8px; padding-bottom: 10px;"></i> Objetivos
+					<div class="pull-right">
+            <%= link_to assign_goals_path, class: 'btn btn-success' do %>
+            <i class="fa fa-calendar-plus-o fa-fw"></i> Asignar objetivo
+            <% end %>
+					</div>
 				</div>
 				<div class="panel-body">
+
+					<div class="portlet-body">
+		      	<div class="table-responsive">
+		      		<table class="table table-hover">
+		      			<thead>
+		      				<tr>
+		      					<th></th>
+		      					<th>Nombre</th>
+		      					<th>Descirpción</th>
+		      					<th>Inicio</th>
+		      					<th>Final</th>
+		      					<th>Progreso</th>
+		      					<th></th>
+		      				</tr>
+		      			</thead>
+		      			<tbody>
+		      				<% @user_goals.each_with_index do |user_goal, index| %>
+		      					<tr>
+		      						<td>
+		      							<%= index + 1 %>
+		      						</td>
+		      						<td>
+		      							<%= user_goal.goal.name %>
+		      						</td>
+		      						<td>
+		      							<%= user_goal.goal.description %>
+		      						</td>
+		      						<td>
+		      							<%= user_goal.goal.start_date.to_formatted_s(:short) %>
+		      						</td>
+		      						<td>
+		      							<%= user_goal.goal.end_date.to_formatted_s(:short) %>
+		      						</td>
+		      						<td>
+		      							<%= user_goal.progress == 0 ? 'Sin iniciar' : (user_goal.progress == 1 ? 'En progreso' : 'Finalizada' ) %>
+		      						</td>
+		      						<td>
+		      							<div class="btn-group">
+		      								<button class="btn btn-info btn-sm btn-outline dropdown-toggle" type='button' data-toggle='dropdown'>
+		      									Estatus
+		      									<i class="fa fa-angle-down"></i>
+		      								</button>
+		      								<ul class="dropdown-menu">
+		      									<li>
+		      										<%= link_to upgrade_goal_status_path(user_goal_id: user_goal.id, progress: user_goal.progress + 1) do %>
+			      										<i class="fa fa-plus-square fa-fw"></i>
+			      										 Aumentar progreso
+		      										<% end %>
+		      									</li>
+		      									<li>
+		      										<%= link_to upgrade_goal_status_path(user_goal_id: user_goal.id, progress: 3) do %>
+		      											<i class="fa fa-check-square fa-fw"></i>
+		      											 Terminar
+		      										<% end %>
+		      									</li>
+	      										<li>
+	      											<%= link_to unlink_user_goal_path(user_goal_id: user_goal.id), data: { confirm: "¿Está seguro que desea desasignar el objetivo: #{user_goal.goal.name}?" } do %>
+		      											<i class="fa fa-trash fa-fw"></i>
+		      											 Desasignar
+		      										<% end %>
+	      										</li>
+		      								</ul>
+		      							</div>
+		      						</td>
+		      					</tr>
+		      				<% end %>
+		      			</tbody>
+		      		</table>
+		      	</div>
+			    </div>
+
+				</div>
 			</div>
 		</div>
 	</div>

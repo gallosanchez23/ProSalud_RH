@@ -1,18 +1,18 @@
 <section class="container-fluid">
 	
 	<div class='row' style='padding-left: 3%;'>
-		<h2>Nuevo objetivo</h2>
+		<h2>Editar objetivo - <%= @goal.name %></h1>
 	</div>
 
 	<br>
-	<%= form_for(@new_goal) do |f| %>
+	<%= form_for(@goal) do |f| %>
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="panel panel-default">
 
 					<div class="panel-heading">
 						<i class="fa fa-info fa-fw"></i>
-						 Información sobre nuevo objetivo
+						 Información sobre objetivo a editar
 					</div>
 
 					<div class="panel-body form">
@@ -21,26 +21,26 @@
 								<div class="col-xs-5">
 									<div class='form-group form-md-line-input'>
 										<%= hidden_field_tag :from, params[:from] %>
-										<%= f.label :name,'Nombre *' %>
-		        				<%= f.text_field :name, class: 'form-control', placeholder: 'Objetivo', required: true, autofocus: true %>
+										<%= f.label :name,'Nombre' %>
+		        				<%= f.text_field :name, class: 'form-control', placeholder: 'Objetivo', autofocus: true %>
 									</div>
 									<div class="row">
 										<div class="col-xs-6">
 											<div class="form-group form-md-line-input">
-												<%= f.label :start_date, 'Fecha de inicio *' %>
-												<%= f.date_field :start_date, class: 'form-control', required: true %>
+												<%= f.label :start_date, 'Fecha de inicio' %>
+												<%= f.date_field :start_date, class: 'form-control' %>
 											</div>
 										</div>
 										<div class="col-xs-6">
 											<div class="form-group form-md-line-input">
-												<%= f.label :end_date, 'Fecha de fin *' %>
-												<%= f.date_field :end_date, class: 'form-control', required: true %>
+												<%= f.label :end_date, 'Fecha de fin' %>
+												<%= f.date_field :end_date, class: 'form-control' %>
 											</div>
 										</div>
 									</div>
 									<div class="form-group form-md-line-input">
-										<%= f.label :goal_type, 'Tipo de objetivo *' %>
-										<%= f.select :goal_type, options_for_select({ 'Individual' => 1, 'Grupal' => 2 }), { include_blanck: false }, class: 'form-control', required: true %>
+										<%= f.label :goal_type, 'Tipo de objetivo' %>
+										<%= f.select :goal_type, options_for_select({ 'Individual' => 1, 'Grupal' => 2 }), { include_blanck: false }, class: 'form-control' %>
 									</div>
 								</div>
 								<div class="col-xs-7">

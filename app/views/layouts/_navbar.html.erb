@@ -20,10 +20,10 @@
           <% end %>
         </li>
         <li>
-          <a href="#">
+          <%= link_to pages_path do %>
             <i class="fa fa-sitemap fa-fw"></i>
              Organigrama
-          </a>
+          <% end %>
         </li>
         <li>
           <%= link_to goals_path do %>
@@ -31,9 +31,40 @@
              Objetivos
           <% end %>
         </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" role='button' data-toggle='dropdown'>
+              <i class="fa fa-cube fa-fw"></i>
+               Catálogos
+              <i class="fa fa-angle-down"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <%= link_to places_path do %>
+                <i class="fa fa-map-marker fa-fw"></i>
+                 Lugares
+                <% end %>
+              </li>
+              <li>
+                <%= link_to '#' do %>
+                <i class="fa fa-briefcase fa-fw"></i>
+                 Roles externos
+                <% end %>
+              </li>
+              <li>
+                <%= link_to presents_path do %>
+                  <i class="fa fa-gift fa-fw"></i>
+                  Recompensas
+                <% end %>
+              </li>
+            </ul>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-trophy fa-lg"></i></a></li>
+        <li>
+          <%= link_to presents_path do %>
+            <i class="fa fa-trophy fa-lg"></i>
+          <% end %>
+        </li>
         <li>
           <%= link_to root_path do %>
             <i class="fa fa-sign-out fa-lg"></i>

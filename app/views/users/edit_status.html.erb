@@ -1,7 +1,7 @@
 <section class="container-fluid">
 	
 	<div class="row" style="padding-left: 3%;">
-		<h2>Baja - <%= @user.name + ' ' + @user.last_name %></h2>
+		<h2>Baja - <%= @user.name + ' ' + @user.lastname %></h2>
 	</div>
 
 	<%= form_for(@user) do |f| %>
@@ -32,7 +32,7 @@
 						<div class="form-actions outside text-center">
 							<div class="field">
 								<%= link_to 'Cancelar', users_path, class: 'btn btn-danger' %>
-								<%= f.submit 'Guardar', class: 'btn btn-primary', data: { confirm: "¿Está seguro que desea establacer este como el motivo para la baja de #{@user.name} #{@user.last_name}?" } %>
+								<%= f.submit 'Guardar', class: 'btn btn-primary', data: { confirm: "¿Está seguro que desea establacer este como el motivo para la baja de #{@user.name} #{@user.lastname}?" } %>
 							</div>
 						</div>
 					</div>
