@@ -1,0 +1,57 @@
+<section class="container-fluid">
+	
+	<div class='row' style='padding-left: 3%;'>
+		<h2>Editar localización - <%= @place.name %></h1>
+	</div>
+
+	<br>
+	<%= form_for(@place) do |f| %>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+
+					<div class="panel-heading">
+						<i class="fa fa-info fa-fw"></i>
+						 Información sobre localización a editar
+					</div>
+
+					<div class="panel-body form">
+						<div class="form-body">
+							<div class="row">
+								<div class="col-xs-6">
+									<div class='form-group form-md-line-input'>
+										<%= hidden_field_tag :from, params[:from] %>
+										<%= f.label :name,'Nombre' %>
+		        				<%= f.text_field :name, class: 'form-control', placeholder: 'Objetivo', autofocus: true %>
+									</div>
+								</div>
+								<div class="col-xs-6">
+									<div class="form-group form-md-line-input">
+										<%= f.label :adress, 'Dirección' %>
+										<%= f.text_field :adress, class: 'form-control' %>
+									</div>
+								</div>
+								<div class="col-xs-6">
+									<div class="form-group form-md-line-input">
+										<%= f.label :phone, 'Teléfono' %>
+										<%= f.text_field :phone, class: 'form-control' %>
+									</div>
+								</div>
+							</div>
+						</div>
+						<br>
+
+						<div class="form-actions outside text-center">
+							<div class="field">
+								<%= link_to 'Cancelar', places_path, class: 'btn btn-danger' %>
+								<%= f.submit 'Guardar', class: 'btn btn-primary' %>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	<% end %>
+
+</section>

@@ -59,14 +59,14 @@
 		      										<% end %>
 		      									</li>
 		      									<li>
-		      										<%= link_to '#' do %>
+		      										<%= link_to edit_place_path(place) do %>
 		      											<i class="fa fa-pencil-square-o fa-fw"></i>
 		      											 Editar
 		      										<% end %>
 		      									</li>
 	      										<li>
-	      											<%= link_to '#' do %>
-		      											<i class="fa fa-calendar-times-o fa-fw"></i>
+	      											<%= link_to place_path(place), method: :delete, data: { confirm: "¿Está seguro que desea eliminar la localización: #{place.name}?" } do %>
+		      											<i class="fa fa-trash fa-fw"></i>
 		      											 Eliminar
 		      										<% end %>
 	      										</li>

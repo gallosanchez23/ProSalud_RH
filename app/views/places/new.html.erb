@@ -1,0 +1,74 @@
+<section class="container-fluid">
+	
+	<div class='row' style='padding-left: 3%;'>
+		<h2>Nueva localización</h2>
+	</div>
+
+	<br>
+	<%= form_for(@new_place) do |f| %>
+		<div class="row">
+
+			<div class='col-xs-3'>
+				<div class='image-input-wrapper text-center'>
+					<br>
+					<div class='image-input-widget'>
+						<%= image_tag(@new_place.photo.present? ? '#{@new_place.photo}' : 'placeholders/image_400.png', style: 'max-width: 100%;') %>
+						<div class='image-input-actions'>
+							<%= f.label :photo, 'Seleccionar' %>
+							<a class='clear-input' href='#'>&times;</a>
+						</div>
+						<%= f.file_field :photo, accept: 'image/*' %>
+						<%= f.hidden_field :remove_photo, value: 0, class: 'remove-file' %>
+					</div>
+				</div>
+			</div>
+
+			<br>
+			<div class="col-xs-9">
+				<div class="panel panel-default">
+
+					<div class="panel-heading">
+						<i class="fa fa-info fa-fw"></i>
+						 Información sobre nueva localización
+					</div>
+
+					<div class="panel-body form">
+						<div class="form-body">
+							<div class="row">
+								<div class="col-xs-6">
+									<div class='form-group form-md-line-input'>
+										<%= hidden_field_tag :from, params[:from] %>
+										<%= f.label :name,'Nombre *' %>
+		        				<%= f.text_field :name, class: 'form-control', required: true, autofocus: true %>
+									</div>
+								</div>
+								<div class="col-xs-6">
+									<div class="form-group form-md-line-input">
+										<%= f.label :phone, 'Teléfono *' %>
+										<%= f.text_field :phone, class: 'form-control', placeholders: '81 8000 8000', required: true %>
+									</div>
+								</div>
+								<div class="col-xs-12">
+									<div class='form-group form-md-line-input'>
+										<%= f.label :adress,'Dirección *' %>
+		        				<%= f.text_field :adress, rows: 6, class: 'form-control', required: true %>
+									</div>
+								</div>
+							</div>
+						</div>
+						<br>
+
+						<div class="form-actions outside text-center">
+							<div class="field">
+								<%= link_to 'Cancelar', places_path, class: 'btn btn-danger' %>
+								<%= f.submit 'Guardar', class: 'btn btn-primary' %>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	<% end %>
+
+</section>

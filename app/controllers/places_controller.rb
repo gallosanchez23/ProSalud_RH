@@ -11,22 +11,35 @@ class PlacesController < ApplicationController
 	end
 
 	def create
-		@new_place = Goal.create(place_params)
+		@new_place = Place.create(place_params)
 
 		if @new_place.save
-			redirect_to @new_place
+			redirect_to places_path
 		else
 			render :new
 		end
 	end
 
 	def destroy
+		@place = Place.find(params[:id])
+		@place.destroy
+		redirect_to places_path
+	end
+
+	def edit
+		@place = Place.find(params[:id])
+	end
+
+	def update
+		@place = Place.find(params[:id])
+		@place.update_attributes(place_params)
+		redirect_to places_path
 	end
 
 	private
 
 	def place_params
-		params.require(:place).permits(:name, :adress, :phone, :photo)
+		params.require(:place).permit(:name, :adress, :phone, :photo)
 	end
 
 end
