@@ -8,4 +8,5 @@ class UserGoal < ActiveRecord::Base
   belongs_to :user
   belongs_to :goal
   validates :user_id, :goal_id, presence: true
+  enum progress: [:is_new, :in_progress, :finished]
 end

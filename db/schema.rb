@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 20161118163307) do
   create_table "goals", force: :cascade do |t|
     t.string  "name",        limit: 255
     t.text    "description", limit: 65535
-    t.date    "start_date",                default: '2016-11-21'
-    t.date    "end_date",                  default: '2016-11-21'
+    t.date    "start_date",                default: '2016-12-05'
+    t.date    "end_date",                  default: '2016-12-05'
     t.integer "goal_type",   limit: 4,     default: 1
   end
 
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 20161118163307) do
     t.string  "photo",            limit: 255
     t.string  "curp",             limit: 255
     t.string  "rfc",              limit: 255
-    t.date    "start_date",                     default: '2016-11-21'
+    t.date    "start_date",                     default: '2016-12-05'
     t.integer "antique",          limit: 4
     t.boolean "status",                         default: true
     t.text    "comments",         limit: 65535

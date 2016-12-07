@@ -17,16 +17,20 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'ransack'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
-gem "paperclip", "~> 5.0.0"
+gem 'paperclip', '~> 5.0.0'
 
 gem 'rails_12factor', group: :production
 
-group :test do
-	gem 'sqlite3'
-end
+#group :test do
+#	gem 'sqlite3'
+#end
 
 group :development, :test do
   gem 'byebug'
+  gem 'factory_girl_rails'
+  gem 'ffaker', require: true
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
 end
 
 group :development do
